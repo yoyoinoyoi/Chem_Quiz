@@ -1,0 +1,17 @@
+.DoneTable {
+    border: 1px solid rgb(158, 155, 155);
+}
+.DoneTable tr td {
+    width: 500px;
+    border: 1px solid rgb(158, 155, 155);
+}
+
+.white {
+    background-color: rgb(158, 155, 155)
+}
+.red {
+    background-color: rgb(245, 92, 92)
+}
+.blue {
+    background-color: rgb(93, 100, 228)
+}

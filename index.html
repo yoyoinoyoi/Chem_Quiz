@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue app</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1> Choices </h1> <!--  -->
+        <choices-content-name v-for="Citem in ChemicalItems" :key="Citem.index" :chemical-item="Citem"></choices-content-name>
+
+        <h1> Done ({{ count }})</h1>
+        <table class="DoneTable">
+            <tr> 
+                <td> Name 
+                    <button @click="submitAnswer"> 確定 </button>
+                </td>
+                <td v-bind:class="AnswerColor[0]"> ion1 
+                    <select v-model="AnswerId[0]">
+                        <option v-for="item in ChemicalItems" v-bind:value="item.index">
+                            {{ item.element }}
+                        </option>
+                    </select>
+                </td>
+                <td v-bind:class="AnswerColor[1]"> ion2 
+                    <select v-model="AnswerId[1]">
+                        <option v-for="item in ChemicalItems" v-bind:value="item.index">
+                            {{ item.element }}
+                        </option>
+                    </select>
+                </td>
+                <td v-bind:class="AnswerColor[2]"> ion3 
+                    <select v-model="AnswerId[2]">
+                        <option v-for="item in ChemicalItems" v-bind:value="item.index">
+                            {{ item.element }}
+                        </option>
+                    </select>
+                </td>
+                <td v-bind:class="AnswerColor[3]"> ion4 
+                    <select v-model="AnswerId[3]">
+                        <option v-for="item in ChemicalItems" v-bind:value="item.index">
+                            {{ item.element }}
+                        </option>
+                    </select>
+                </td>
+                <td v-bind:class="AnswerColor[4]"> ion5
+                    <select v-model="AnswerId[4]">
+                        <option v-for="item in ChemicalItems" v-bind:value="item.index">
+                            {{ item.element }}
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr v-for="result in ResultItems" v-bind:key="result.name"> 
+                <td>{{ result.action }}</td>
+                <td>{{ result.ion1 }}</td>
+                <td>{{ result.ion2 }}</td>
+                <td>{{ result.ion3 }}</td>
+                <td>{{ result.ion4 }}</td>
+                <td>{{ result.ion5 }}</td>
+            </tr>
+        </table>
+        <h6> </h6>
+        <h1> Action </h1> 
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+        <button @click="addResult(selected)"> Try </button>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
